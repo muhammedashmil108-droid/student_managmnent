@@ -54,6 +54,7 @@ class _HomeState extends State<Home> {
                   valueListenable: studentsBox.listenable(),
                   builder: (context, box, child) {
                     final students = box.values.toList();
+                    final studentkeys = box.keys.toList();
 
                     if (students.isEmpty) {
                       return Center(child: Text("No students added yet"));
@@ -63,6 +64,7 @@ class _HomeState extends State<Home> {
                       itemCount: students.length,
                       itemBuilder: (context, index) {
                         final student = students[index];
+                        final studentKey = studentkeys[index];
 
                         return Card(
                           margin: EdgeInsets.all(10),
@@ -79,8 +81,10 @@ class _HomeState extends State<Home> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      Details(student: student),
+                                  builder: (context) => Details(
+                                    student: student,
+                                    studentKey: studentKey,
+                                  ),
                                 ),
                               );
                             },
@@ -93,8 +97,8 @@ class _HomeState extends State<Home> {
               ),
 
               FloatingActionButton(
-                onPressed: () async {
-                  await Navigator.push(
+                onPressed: () {
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => AddPage()),
                   );

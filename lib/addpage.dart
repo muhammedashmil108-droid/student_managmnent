@@ -2,13 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class AddPage extends StatefulWidget {
-  const AddPage({super.key});
+  final dynamic student;
+  final dynamic studentKey;
+
+  const AddPage({super.key, this.student, this.studentKey});
 
   @override
   State<AddPage> createState() => _AddPageState();
 }
 
 class _AddPageState extends State<AddPage> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.student != null) {
+      namecontroller.text = widget.student!['name'];
+      agecontroller.text = widget.student!['age'].toString();
+      classcontroller.text = widget.student!['class'].toString();
+      addresscontroller.text = widget.student!['address']?.toString() ?? '';
+    }
+  }
+
   final namecontroller = TextEditingController();
   final agecontroller = TextEditingController();
   final classcontroller = TextEditingController();
@@ -128,8 +142,17 @@ class _AddPageState extends State<AddPage> {
                                 };
                                 //  get hive box
                                 final box = Hive.box('students');
-                                // save student in hive
-                                await box.add(student);
+
+                                // update operation
+                                if (widget.studentKey != null) {
+                                  // update operation
+                                  await box.put(widget.studentKey, student);
+                                } else {
+                                  //add operation
+                                  await box.add(student);
+                                }
+                                // // save student in hive
+                                // await box.add(student);
                                 //  close add page
                                 if (mounted) {
                                   Navigator.pop(context);
@@ -143,7 +166,11 @@ class _AddPageState extends State<AddPage> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
-                              child: Text("Add student"),
+                              child: Text(
+                                widget.student == null
+                                    ? "Add Student"
+                                    : "Update Student",
+                              ),
                             ),
                           ],
                         ),
