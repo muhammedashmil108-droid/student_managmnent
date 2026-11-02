@@ -71,9 +71,9 @@ class _HomeState extends State<Home> {
                           child: ListTile(
                             leading: CircleAvatar(child: Icon(Icons.person)),
                             title: Text(student["name"].toString()),
-                            subtitle: Text(
-                              "age: ${student["age"]} | class: ${student["class"]} ",
-                            ),
+                            // subtitle: Text(
+                            //   "age: ${student["age"]} | class: ${student["class"]} ",
+                            // ),
                             trailing: Icon(Icons.arrow_forward_ios),
                             onTap: () {
                               Navigator.push(
