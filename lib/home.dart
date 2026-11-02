@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
                     final students = box.values.toList();
 
                     if (students.isEmpty) {
-                      return Center(child: Text("No students add "));
+                      return Center(child: Text("No students added yet"));
                     }
 
                     return ListView.builder(
@@ -71,9 +71,9 @@ class _HomeState extends State<Home> {
                           child: ListTile(
                             leading: CircleAvatar(child: Icon(Icons.person)),
                             title: Text(student["name"].toString()),
-                            // subtitle: Text(
-                            //   "age: ${student["age"]} | class: ${student["class"]} ",
-                            // ),
+                            subtitle: Text(
+                              "age: ${student["age"]} | class: ${student["class"]} ",
+                            ),
                             trailing: Icon(Icons.arrow_forward_ios),
                             onTap: () {
                               Navigator.push(
