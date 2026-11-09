@@ -151,9 +151,7 @@ class _AddPageState extends State<AddPage> {
                                   //add operation
                                   await box.add(student);
                                 }
-                                // // save student in hive
-                                // await box.add(student);
-                                //  close add page
+
                                 if (mounted) {
                                   Navigator.pop(context);
                                 }
@@ -166,11 +164,7 @@ class _AddPageState extends State<AddPage> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
-                              child: Text(
-                                widget.student == null
-                                    ? "Add Student"
-                                    : "Update Student",
-                              ),
+                              child: Text("Move Student"),
                             ),
                           ],
                         ),

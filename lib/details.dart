@@ -90,7 +90,7 @@ class _DetailsState extends State<Details> {
                   subtitle: Text("${widget.student['address']}"),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 21),
               ElevatedButton(
                 onPressed: () async {
                   await Navigator.push(
@@ -127,6 +127,7 @@ class _DetailsState extends State<Details> {
                         content: Text(
                           'Are you sure you want to delete this student?',
                         ),
+
                         actions: [
                           TextButton(
                             onPressed: () {

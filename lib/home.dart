@@ -13,12 +13,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // List<Map<String, dynamic>> students = [
-  //   {"name": "Ashmil", "age": 18, "class": 12},
-  //   {"name": "Riswan", "age": 18, "class": 12},
-  //   {"name": "Jihan", "age": 19, "class": 12},
-  //   {"name": "Shiyas", "age": 19, "class": 12},
-  // ];
+  
   late Box studentsBox;
 
   @override
